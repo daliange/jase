@@ -91,8 +91,9 @@ public class Primitive
     	
     	
     	
-    	Function e = new Function();
-    	Function f = new Function();
+    	Primitive e = new Primitive();
+    	Primitive f = new Primitive();
+    	
     	if(e==f){
     		System.out.println("Class e==f,"+"true");
     	}else{
