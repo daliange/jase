@@ -9,6 +9,7 @@ public class Primitive
     public static void main( String[] args )
     {
     	Boolean boo = true;
+    	
     	/**一个字节8个比特位，8bits**/
     	/**
     	 * 符号位都是用0表示“正”，用1表示“负”
