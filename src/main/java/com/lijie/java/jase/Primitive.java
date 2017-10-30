@@ -38,11 +38,10 @@ public class Primitive
     	 * int 		32bits
     	 * long		64bits
     	 * 
+    	 * boolean	8bits
+    	 * char		16bits
     	 * float	32bits
     	 * double	64bits
-    	 * 
-    	 * char		16bits
-    	 * boolean	8bits
     	 * **/
     	
     	/**
