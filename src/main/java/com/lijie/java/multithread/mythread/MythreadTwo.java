@@ -7,11 +7,12 @@ public class MythreadTwo extends Thread{
 		super.run();
 		for (int i = 0; i < 10; i++) {
 			try {
+				
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println(Thread.currentThread().getName());
+			System.out.println("MythreadTwo="+Thread.currentThread().getName());
 			
 		}
 		
