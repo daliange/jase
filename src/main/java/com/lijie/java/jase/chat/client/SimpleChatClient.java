@@ -1,10 +1,7 @@
-package com.lijie.java.jase.chat;
+package com.lijie.java.jase.chat.client;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -43,13 +40,13 @@ public class SimpleChatClient {
 		qScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		outgoing = new JTextField(20);
 		JButton sendButton = new JButton("Send");
-		sendButton.addActionListener(new SendButtonListener());
+		sendButton.addActionListener(new SendButtonListener(outgoing,writer));
 		mainPanel.add(qScroller);
 		mainPanel.add(outgoing);
 		mainPanel.add(sendButton);
 		setUpNetworking();
 		
-		Thread readThread = new Thread(new IncomingReader());
+		Thread readThread = new Thread(new IncomingReader(incoming,reader));
 		readThread.start();
 		
 		frame.getContentPane().add(BorderLayout.CENTER,mainPanel);
@@ -66,46 +63,8 @@ public class SimpleChatClient {
 			System.out.println("networking established !");
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
 		}
 	}
-	
-	
-	/**外部类**/
-	public class SendButtonListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			try {
-				writer.println(outgoing.getText());
-				writer.flush();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-				// TODO: handle exception
-			}
-		}
-
-	}
-	
-	
-	public class IncomingReader implements Runnable{
-		public void run() {
-			String message;
-			try {
-				while ((message = reader.readLine())!=null){
-					System.out.println("read "+message);
-					incoming.append(message +"\n");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				// TODO: handle exception
-			}
-			// TODO Auto-generated method stub
-			
-		}
-	}
-
-
 	
 
 }
