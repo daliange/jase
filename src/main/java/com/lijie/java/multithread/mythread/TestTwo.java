@@ -5,7 +5,10 @@ public class TestTwo {
 	public static void main(String[] args) {
 		MythreadTwo mythreadTwo = new MythreadTwo();
 		mythreadTwo.setName("MythreadTwo");
-		mythreadTwo.start();
+		//异步执行
+		//mythreadTwo.start();
+		//同步执行
+		mythreadTwo.run();
 		
 		for (int i = 0; i < 10; i++) {
 			try {
