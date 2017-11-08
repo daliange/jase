@@ -4,9 +4,9 @@ public class Test {
 	
 	public static void main(String[] args) {
 		MyRunnable myRunnable = new MyRunnable();
-		Thread thread = new Thread(myRunnable);
+		Thread thread = new Thread(myRunnable,"MyRunnable----");
 		thread.start();
-		System.out.println("运行结束！");
+		System.out.println("main="+Thread.currentThread().getName());
 	}
 
 }
