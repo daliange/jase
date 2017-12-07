@@ -9,7 +9,7 @@ public class ThreadVariablesTwo extends Thread{
 	}
 	
 	@Override
-	public void run() {
+	synchronized public void run() {
 		
 		System.out.println(Thread.currentThread().getName()+"执行前:i="+i);
 		i--;
