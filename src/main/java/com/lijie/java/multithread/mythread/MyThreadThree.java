@@ -4,13 +4,13 @@ public class MyThreadThree extends Thread{
 	
 	private int i;
 	public MyThreadThree(int i) {
-		super();
+		//super();
 		this.i = i;
 	}
 	
 	@Override
 	public void run() {
-		super.run();
+		//super.run();
 		System.out.println(i);
 	}
 	

@@ -6,9 +6,9 @@ public class TestTwo {
 		MythreadTwo mythreadTwo = new MythreadTwo();
 		mythreadTwo.setName("MythreadTwo");
 		//异步执行
-		//mythreadTwo.start();
+		mythreadTwo.start();
 		//同步执行
-		mythreadTwo.run();
+		//mythreadTwo.run();
 		
 		for (int i = 0; i < 10; i++) {
 			try {
