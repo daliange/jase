@@ -1,4 +1,4 @@
-package com.lijie.java.jase;
+package com.lijie.java.jase.serial;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
+/**
+ * 2018.5.3序列化
+ * **/
 public class Serializable {
 	
 	/**
@@ -19,6 +22,9 @@ public class Serializable {
 		Student student = new Student();
 		student.setName("daliange");
 		student.setAge(30);
+		Teacher teacher = new Teacher();
+		teacher.setName("haha");
+		student.setTeacher(teacher);
 		
 		File file = new File("/Users/lijie/Documents/develop/jase/student.txt");  
 		
@@ -26,6 +32,8 @@ public class Serializable {
 			//Student对象序列化过程  
 		    FileOutputStream fos = new FileOutputStream(file);  
 		    ObjectOutputStream oos = new ObjectOutputStream(fos);  
+		    oos.writeObject(student);  
+		    oos.writeObject(student);  
 		    oos.writeObject(student);  
 		    oos.flush();  
 		    oos.close();  
@@ -38,6 +46,7 @@ public class Serializable {
 		    Student st1 = (Student) ois.readObject();  
 		    System.out.println("name = " + st1.getName());  
 		    System.out.println("age = " + st1.getAge());  
+		    System.out.println("teacher = " + st1.getTeacher().getName());  
 		    ois.close();  
 		    fis.close();  
 			} catch (Exception e) {
