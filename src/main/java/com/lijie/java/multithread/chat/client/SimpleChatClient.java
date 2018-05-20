@@ -1,6 +1,8 @@
-package com.lijie.java.jase.chat.client;
+package com.lijie.java.multithread.chat.client;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -40,13 +42,13 @@ public class SimpleChatClient {
 		qScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		outgoing = new JTextField(20);
 		JButton sendButton = new JButton("Send");
-		sendButton.addActionListener(new SendButtonListener(outgoing,writer));
+		sendButton.addActionListener(new SendButtonListener());
 		mainPanel.add(qScroller);
 		mainPanel.add(outgoing);
 		mainPanel.add(sendButton);
 		setUpNetworking();
 		
-		Thread readThread = new Thread(new IncomingReader(incoming,reader));
+		Thread readThread = new Thread(new IncomingReader());
 		readThread.start();
 		
 		frame.getContentPane().add(BorderLayout.CENTER,mainPanel);
@@ -66,5 +68,40 @@ public class SimpleChatClient {
 		}
 	}
 	
+	public class SendButtonListener implements ActionListener{
+		
+
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				writer.println(outgoing.getText());
+				writer.flush();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			outgoing.setText("");
+			outgoing.requestFocus();
+			
+		}
+		
+	}
+	
+	
+	public class IncomingReader implements Runnable{
+		
+		public void run() {
+			
+			String message;
+			try {
+				while ((message = reader.readLine())!=null){
+					System.out.println("read "+message);
+					incoming.append(message +"\n");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
 
 }
