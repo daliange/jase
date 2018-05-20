@@ -46,8 +46,10 @@ public class SimpleChatClient {
 		mainPanel.add(qScroller);
 		mainPanel.add(outgoing);
 		mainPanel.add(sendButton);
+		/**与serverSocket建立连接**/
 		setUpNetworking();
 		
+		/**从服务器读取信息**/
 		Thread readThread = new Thread(new IncomingReader());
 		readThread.start();
 		
@@ -68,6 +70,7 @@ public class SimpleChatClient {
 		}
 	}
 	
+	/**向服务器发送信息**/
 	public class SendButtonListener implements ActionListener{
 		
 

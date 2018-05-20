@@ -32,6 +32,7 @@ public class VerySimpleChatServer {
 			try {
 				while ((message=reader.readLine())!=null){
 					System.out.println("read "+message);
+					/**向其他客户端发送信息**/
 					tellEveryone(message);
 				}
 			} catch (Exception e) {
@@ -53,12 +54,17 @@ public class VerySimpleChatServer {
 		
 		clientOutputStreams = new ArrayList();
 		try {
+			/**创建ServerSocket**/
 			ServerSocket serverSocket = new ServerSocket(5000);
 			System.out.println("server启动成功，监听中。。。");
 			while(true){
+				/**获取socket连接**/
 				Socket clientSocket = serverSocket.accept();
+				/**根据socket获取writer**/
 				PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream());
+				/**将writer放入集合中**/
 				clientOutputStreams.add(printWriter);
+				/**创建ClientHandler**/
 				Thread t = new Thread(new ClientHandler(clientSocket,clientOutputStreams));
 				t.start();
 				System.out.println("got a connection !");
