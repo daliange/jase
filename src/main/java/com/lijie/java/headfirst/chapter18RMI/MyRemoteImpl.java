@@ -28,7 +28,10 @@ public class MyRemoteImpl extends UnicastRemoteObject implements MyRemote{
 			//创建并导出接受指定port请求的本地主机上的Registry实例。  
             LocateRegistry.createRegistry(1099); 
             
+            
 			MyRemote myRemote = new MyRemoteImpl();
+			
+			//先创建注册表，然后才能在注册表中存储远程对象信息
 			Naming.rebind("RemoteHello", myRemote);
 			System.out.println("Server 启动成功。。。");
 		} catch (Exception e) {
