@@ -2,7 +2,6 @@ package com.lijie.java.headfirst.chapter16Collection.sort;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.TreeSet;
 
 /**
  * 比较集合
@@ -18,7 +17,7 @@ public class CollectionTest {
 	public static void main(String[] args) {
 		
 		/**Collections.sort(list)排序效率很高**/
-		ArrayList list = new ArrayList<Integer>();
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(int i=1000000;i>0;i--){
 			list.add(i);
 		}
