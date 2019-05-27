@@ -3,6 +3,16 @@ package com.lijie.java.headfirst.chapter03CognitiveVariable;
 /**
  * 基本类型!
  * 
+ * https://github.com/daliange/jase
+ * byte：1 byte 8 bit
+ * char：2 byte 16 bit
+ * short：2 byte 16 bit
+ * int：4 byte 32 bit
+ * float：4 byte 32 bit
+ * long：8 byte 64 bit
+ * double：8 byte 64 bit
+ * 
+ * 
  * 原码、反码、补码
  * 真值=+0101010，原码=反码=补码=00101010
  * 	真值=-0101010
