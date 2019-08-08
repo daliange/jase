@@ -7,5 +7,17 @@ public class StackHeap {
 	 * heap堆，保存所有的对象
 	 * 
 	 * **/
+	
+	public static void main(String[] args) {
+		try {
+			int i=1;
+			char a = 'a';
+			String b = "b";
+			Thread.currentThread().sleep(100000000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
